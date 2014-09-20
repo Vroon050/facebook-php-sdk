@@ -1,0 +1,10 @@
+include_once('facebook-php-sdk/src/facebook.php');
+$facebook = new Facebook(array(
+  'appId'  => '<your_app_id>',
+  'secret' => '<your_app_secret>',
+));
+$result = $facebook->api("/me/friends?limit=0");
+$friends = array();
+foreach($result['data'] as $index => $friend):
+   $friends[] = $friend['id'];
+endforeach;
